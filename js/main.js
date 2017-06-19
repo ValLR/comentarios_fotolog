@@ -24,8 +24,22 @@ function print(){
 
 		//DOM, creo un div y h3 + p para el comentario
 		var lilDiv= document.createElement("div");//div para el cuadro
-		lilDiv.setAttribute("id","dale")
+		lilDiv.setAttribute("id","dale");
 
-		var title=document.createElement("h5")//h5 para el nombre
+		var title=document.createElement("h5");//h5 para el nombre
+		title.classList.add("comment-title");
+
+		var parrafo=document.createElement("p");//p para el comentario
+		parrafo.classList.add("comment");
+
+		//creación de nodos a imprimir
+		var textClave= document.createTextNode("#" + (i+1)+ " " + nick+ ":");
+		var textValor= document.createTextNode(valui);
+
+		title.appendChild(textClave);
+		parrafo.appendChild(textValor);
+
+		lilDiv.appendChild(title);
+		lilDiv.appendChild(parrafo);
 	}
 }
