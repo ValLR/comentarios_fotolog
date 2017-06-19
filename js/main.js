@@ -1,5 +1,5 @@
 /*aquí va tu código*/
-function initial{
+function initial(){
 	var save= document.getElementById("save");
 	save.addEventListener("click", saveData);//saveData es la función que reune values y contiene al localStorage
 
@@ -16,11 +16,11 @@ function saveData(){
 }
 function print(){
 	var container= document.getElementById("ale");
-	contain.innerHTML=""//limpia inputs cuando se recarga pag
+	container.innerHTML = ""//limpia inputs cuando se recarga pag
 
 	for(var i=0; i < localStorage.length; i++){
-		var nick = localStorage.key(i);
-		var valui= localStorage.getItem(nick);
+		var nombre = localStorage.key(i);
+		var valore= localStorage.getItem(nombre);
 
 		//DOM, creo un div y h3 + p para el comentario
 		var lilDiv= document.createElement("div");//div para el cuadro
@@ -28,19 +28,34 @@ function print(){
 
 		var title=document.createElement("h5");//h5 para el nombre
 		title.classList.add("comment-title");
-
 		var parrafo=document.createElement("p");//p para el comentario
 		parrafo.classList.add("comment");
 
 		//creación de nodos a imprimir
-		var textClave= document.createTextNode("#" + (i+1)+ " " + nick+ ":");
-		var textValor= document.createTextNode(valui);
+		var textClave= document.createTextNode("#" + (i+1) + " " + nombre+ ":");
+		var textValor= document.createTextNode(valore);
 
 		title.appendChild(textClave);
 		parrafo.appendChild(textValor);
 
 		lilDiv.appendChild(title);
 		lilDiv.appendChild(parrafo);
+
+		container.appendChild(lilDiv)
 	}
 }
 
+var clearOut=document.getElementById("clear");
+clearOut.addEventListener("click", clearField);
+
+//para el botón "Limpiar Texto"
+function clearField(){ 
+	var container= document.getElementById("ale");
+	container.innerHTML=""
+}
+
+//mobile
+function clearData(){
+	localStorage.clear();
+	print();
+}
